@@ -1,13 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React  from 'react';
+import ReactDOM  from 'react-dom';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { GraphicsBayTracker } from './GraphicsBayTracker';
+import reportWebVitals  from './reportWebVitals';
+import  { GraphicsBayTracker }  from './components/GraphicsBayTracker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
     <GraphicsBayTracker />
   </React.StrictMode>,
   document.getElementById('root')
