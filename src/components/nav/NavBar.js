@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Link, useHistory } from "react-router-dom"
+import { Login } from "../auth/Login"
+import { Logout } from "../auth/Logout"
 import "./NavBar.css"
 
 
@@ -18,23 +20,23 @@ export const NavBar = () => {
                 <div id="navbarNavDropdown" className="navbar-collapse collapse">
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item active">
-                            <Link className="nav-link" to="/">Pricing Data<span className="sr-only"></span></Link>
+                            <Link className="nav-link" to="/PricingData">Pricing Data<span className="sr-only"></span></Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/locations">My Profile and Tracked Cards</Link>
+                            <Link className="nav-link" to="/Profile">My Profile and Tracked Cards<span className="sr-only"></span></Link>
                         </li>
                     </ul>
                     <ul className="navbar-nav">
-                        <li className="nav-item dropdown">
+                        <li className="nav-item">
                             {
-                                // isAuthenticated()
+                            localStorage.graphicsbaytracker_customer >= 1 ? <Link className="nav-Link" to="/Logout">Logout</Link> :  <Link className="nav-link" to="/Login">Login</Link>
+                               
                                    
                             }
                         </li>
                         <li className="nav-item">
                             {
-                                // !isAuthenticated()
-                                   // <Link className="nav-link" to="/register">Register</Link>
+                            
                                  
                             }
                         </li>
