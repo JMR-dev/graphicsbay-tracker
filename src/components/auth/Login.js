@@ -20,7 +20,7 @@ export const Login = () => {
             .then(exists => {
                 if (exists) {
                     localStorage.setItem("graphicsbaytracker_customer", exists.id)
-                    history.push("/")
+                    history.push("")
                 } else {
                     existDialog.current.showModal()
                 }
@@ -55,6 +55,9 @@ export const Login = () => {
             </section>
             <section className="link--register">
                 <Link to="/register">Not a member yet?</Link>
+            </section>
+            <section className="link-skiplogin">
+                <Link to="/GraphicsBayTrackerHome">Skip Login</Link>
             </section>
         </main>
     )
