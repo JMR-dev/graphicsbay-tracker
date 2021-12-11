@@ -9,7 +9,7 @@ export const GraphicsBayTracker = () => (
   <>
     <Route
       render={() => {
-        if (localStorage.getItem("graphicsbaytracker_customer")) {
+        if (localStorage.getItem("graphicsbaytracker_customer") === 1 ) {
           return (
             <>
               <NavBar />
@@ -17,10 +17,10 @@ export const GraphicsBayTracker = () => (
             </>
           );
         } else {
-          return <Redirect to="/login" />;
-        }
-      }}
-    />
+          return( <Redirect to="/login" />
+          );
+      }}}
+      />
 
     <Route path="/login">
       <Login />
