@@ -7,7 +7,7 @@ export const Login = () => {
     const [email, set] = useState("")
     const existDialog = useRef()
     const history = useHistory()
-    let [gbt_customer, setgbt_customer] = useState(1)
+ 
     
     
 
@@ -21,7 +21,7 @@ export const Login = () => {
     const handleLogin = (e) => {
         e.preventDefault()
         existingUserCheck()
-            .then(exists => {
+            .then (exists => {
                 if (exists) {
                     localStorage.setItem("graphicsbaytracker_customer", exists.id)
                     history.push("")
@@ -31,7 +31,15 @@ export const Login = () => {
             })
     }
 
+const skipLogin = () => {
+    const setLocalStorageUser = () => localStorage.setItem("graphicsbaytracker_customer", 1)
+    const skipToHome = () => history.replace('./GraphicsBayTrackerHome')
+    return (setLocalStorageUser(), skipToHome())
+}
 
+const redirectToRegister = () => {
+    history.replace("./Register")
+}
 
     return (
         
@@ -61,9 +69,9 @@ export const Login = () => {
                 </form>
             </section>
             <section className="link--register">
-                <Link to="/register">Not a member yet?</Link>
+                <button onClick={ redirectToRegister} >Not a member yet?</button>
             </section>
-            <button onClick={ () => localStorage.setItem("graphicsbaytracker_customer", 1)}>Skip Login</button>
+            <button onClick={ skipLogin }>Skip Login</button>
             
     
         </main>

@@ -5,6 +5,6 @@ export const GraphicsBayTrackerHome =()=>{
     
 
     return <div>
-            
+           <p>GraphicsBayTrackerHome</p> 
     </div>
 }
