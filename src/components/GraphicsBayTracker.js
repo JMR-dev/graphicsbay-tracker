@@ -5,11 +5,12 @@ import { NavBar } from "./nav/NavBar";
 import { Login } from "./auth/Login";
 import { Register } from "./auth/Register";
 
-export const GraphicsBayTracker = () => (
-  <>
-    <Route
+export const GraphicsBayTracker = () => {
+  return ( <>
+    <Route 
       render={() => {
-        if (localStorage.getItem("graphicsbaytracker_customer") === 1 ) {
+  
+        if (localStorage.getItem("graphicsbaytracker_customer")) {
           return (
             <>
               <NavBar />
@@ -20,7 +21,7 @@ export const GraphicsBayTracker = () => (
           return( <Redirect to="/login" />
           );
       }}}
-      />
+       />
 
     <Route path="/login">
       <Login />
@@ -29,4 +30,4 @@ export const GraphicsBayTracker = () => (
       <Register />
     </Route>
   </>
-);
+)};

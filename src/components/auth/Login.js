@@ -69,7 +69,7 @@ const redirectToRegister = () => {
                 </form>
             </section>
             <section className="link--register">
-                <button onClick={ redirectToRegister} >Not a member yet?</button>
+                <button onClick={ redirectToRegister}>Not a member yet?</button>
             </section>
             <button onClick={ skipLogin }>Skip Login</button>
             
