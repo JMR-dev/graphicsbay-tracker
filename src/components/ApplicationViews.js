@@ -7,6 +7,11 @@ import { Profile } from "./profile/Profile"
 export const ApplicationViews = () => {
     return (
         <>
+
+            <Route exact path="/">
+                <GraphicsBayTrackerHome />
+            </Route>
+
             <Route path="/GraphicsBayTrackerHome">
                 <GraphicsBayTrackerHome />
             </Route>

@@ -1,15 +1,16 @@
 import React from "react"
+import { Route } from "react-router-dom/cjs/react-router-dom.min"
 import { useState, useEffect } from "react"
 import { NewsStories } from "./NewsStories"
 
 
 export const GraphicsBayTrackerHome = () => {
-    const [ keyprices, setkeyprices] = useState({})
+    // const [ keyprices, setkeyprices] = useState({})
     return (
-    <>
-    
-    <div>
-         
-    </div>
-    </>)
+        <>
+    {/* <Route path="NewsStories"><NewsStories /></Route> */}
+ <h1>Display</h1>
+
+    </>
+    )
 }
