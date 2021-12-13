@@ -29,7 +29,7 @@ export const NavBar = () => {
                     <ul className="navbar-nav">
                         <li className="nav-item">
                             {
-                            localStorage.graphicsbaytracker_customer >= 1 ? <Link className="nav-Link" to="/Logout">Logout</Link> :  <Link className="nav-link" to="/Login">Login</Link>
+                            localStorage.graphicsbaytracker_customer !== 1 ? <Link className="nav-Link" to="/Logout">Logout</Link> :  <Link className="nav-link" to="/Login">Login</Link>
                                
                                    
                             }

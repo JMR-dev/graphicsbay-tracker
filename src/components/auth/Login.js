@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react"
+import React, { useCallback, useRef, useState } from "react"
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom"
 import "./Login.css"
@@ -7,6 +7,10 @@ export const Login = () => {
     const [email, set] = useState("")
     const existDialog = useRef()
     const history = useHistory()
+ 
+    
+    
+
 
     const existingUserCheck = () => {
         return fetch(`http://localhost:8088/users?email=${email}`)
@@ -17,7 +21,7 @@ export const Login = () => {
     const handleLogin = (e) => {
         e.preventDefault()
         existingUserCheck()
-            .then(exists => {
+            .then (exists => {
                 if (exists) {
                     localStorage.setItem("graphicsbaytracker_customer", exists.id)
                     history.push("")
@@ -27,7 +31,18 @@ export const Login = () => {
             })
     }
 
+const skipLogin = () => {
+    const setLocalStorageUser = () => localStorage.setItem("graphicsbaytracker_customer", 1)
+    const skipToHome = () => history.replace('./GraphicsBayTrackerHome')
+    return (setLocalStorageUser(), skipToHome())
+}
+
+const redirectToRegister = () => {
+    history.replace("./Register")
+}
+
     return (
+        
         <main className="container--login">
             <dialog className="dialog dialog--auth" ref={existDialog}>
                 <div>User does not exist</div>
@@ -54,11 +69,11 @@ export const Login = () => {
                 </form>
             </section>
             <section className="link--register">
-                <Link to="/register">Not a member yet?</Link>
+                <button onClick={ redirectToRegister}>Not a member yet?</button>
             </section>
-            <section className="link-skiplogin">
-                <Link to="/GraphicsBayTrackerHome">Skip Login</Link>
-            </section>
+            <button onClick={ skipLogin }>Skip Login</button>
+            
+    
         </main>
     )
 }

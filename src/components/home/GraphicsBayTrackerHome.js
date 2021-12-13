@@ -1,10 +1,15 @@
 import React from "react"
-import { NavBar } from "../nav/NavBar"
+import { useState, useEffect } from "react"
+import { NewsStories } from "./NewsStories"
 
-export const GraphicsBayTrackerHome =()=>{
-    const displayNavBar = NavBar()
 
-    return <div>
-        {displayNavBar}
+export const GraphicsBayTrackerHome = () => {
+    const [ keyprices, setkeyprices] = useState({})
+    return (
+    <>
+    
+    <div>
+         
     </div>
+    </>)
 }
