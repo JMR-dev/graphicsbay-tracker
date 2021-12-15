@@ -42,7 +42,7 @@ const redirectToRegister = () => {
 }
 
     return (
-        
+        <>
         <main className="container--login">
             <dialog className="dialog dialog--auth" ref={existDialog}>
                 <div>User does not exist</div>
@@ -68,13 +68,9 @@ const redirectToRegister = () => {
                     </fieldset>
                 </form>
             </section>
-            <section className="link--register">
                 <button onClick={ redirectToRegister}>Not a member yet?</button>
-            </section>
-            <button onClick={ skipLogin }>Skip Login</button>
-            
-    
-        </main>
+           </main>
+        </>
     )
 }
 

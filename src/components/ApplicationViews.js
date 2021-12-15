@@ -5,6 +5,7 @@ import { Profile } from "./profile/Profile"
 import { GPUDataInterface } from "./pricing/GPUDataInterface"
 
 
+
 export const ApplicationViews = () => {
     return (
         <>
@@ -12,16 +13,13 @@ export const ApplicationViews = () => {
             <Route exact path="/">
                 <GraphicsBayTrackerHome />
             </Route>
-
-            <Route path="/GraphicsBayTrackerHome">
-                <GraphicsBayTrackerHome />
-            </Route>
-            <Route path="profile/Profile" >
+            <Route path="/profile/Profile" >
                 <Profile />
             </Route>
-            <Route path="pricing/GPUDataInterface" >
+            <Route path="/pricing/GPUDataInterface" >
                 <GPUDataInterface />
             </Route>
+            
         </>
     )
 }

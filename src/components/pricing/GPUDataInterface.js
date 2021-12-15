@@ -16,10 +16,16 @@ export const GPUDataInterface = () => {
     return (
         <>
         <h1>GPUDataInterface</h1>
-        <div>
+        
         <table>
-
+            <tr> 
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Price</th>
+            </tr>
+        <tr>{gpucarddata.map(gpudataobj => {return ( <p key ={`gpucardobj--${gpudataobj.id}`}> {gpudataobj.brand} {gpudataobj.model} {gpudataobj.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</p>)})}
+        </tr>
         </table>
-    </div>
+          
         </>
     )}

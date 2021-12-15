@@ -1,20 +1,25 @@
 import React from "react"
 import {useState, useEffect} from "react"
 import { useHistory } from "react-router-dom"
+import { props } from "react"
 
-export const Logout = () => {
-    const [loggedincustomer, setloggedincustomer] = useState(localStorage.getItem("graphicsbaytracker_customer"))
+export const Logout = (props) => {
+     const [loggedIn, setLoggedIn] = useState(true)
 
-    const setItemFromLocalStorage = () => {
-         setloggedincustomer()
-    }
-    return (
-        <>
-        <div>
-        <button onClick={() => setItemFromLocalStorage(localStorage.removeItem("graphicsbaytracker_customer"))}>Log Out</button>
-        </div>
-        </>
-    ) 
+ 
+
+    useEffect(() => {
+      if (localStorage.getItem("graphicsbaytracker_customer") !== "1") {
+          setLoggedIn(true)
+          }
+    }, []);
+  
+  const logOutCustomer = () => {
+        localStorage.removeItem("graphicsbaytracker_customer");
+        setLoggedIn(false)
+  
     
+  }
+
     
 }

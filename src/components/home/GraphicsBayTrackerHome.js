@@ -1,19 +1,15 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import {
-    Route
-} from "react-router-dom/cjs/react-router-dom.min"
-import {
-    useState,
-    useEffect
-} from "react"
-import {
-    NewsStories
-} from "./NewsStories"
+import {Route} from "react-router-dom/cjs/react-router-dom.min"
+import {useState,useEffect } from "react"
+import {NewsStories} from "./NewsStories"
+import { GPUDataInterface } from "../pricing/GPUDataInterface"
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
 
 
 export const GraphicsBayTrackerHome = () => {
     const [keyprices, fetchkeyprices] = useState([])
+    const history = useHistory()
 
     useEffect(
         () => {
@@ -26,8 +22,8 @@ export const GraphicsBayTrackerHome = () => {
     
     return ( <>
 
-        <h1><Link to="/GraphicsBayTrackerHome">GraphicsBay Tracker</Link></h1>  <div> 
-            <button><Link to="/GPUDataInterface">Graphics Card Pricing Tool</Link></button>
+        <h1><Link to="/">GraphicsBay Tracker</Link></h1>  <div> 
+            <button onClick={() => history.push("/pricing/GPUDataInterface")}>Graphics Card Pricing Tool</button>
             {NewsStories()} 
         </div>  
         <aside>
@@ -36,7 +32,7 @@ export const GraphicsBayTrackerHome = () => {
 
         {
             keyprices.map(
-                (cardDataObject) => {
+                cardDataObject => {
                     if (cardDataObject.keyPrice === true)
                     return( 
                     <div> 
