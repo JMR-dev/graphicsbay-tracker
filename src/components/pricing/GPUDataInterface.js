@@ -19,14 +19,14 @@ export const GPUDataInterface = () => {
         []
     )
    
-
-    const selectOEM = (event) => {
-        if (event.target.value === "1") {
-            return (fetchgpucarddata(gpucarddata.filter((gpudataobj) => gpudataobj.oem === "AMD")))
-        } else if (event.target.value === "2") {
-            return (fetchgpucarddata(gpucarddata.filter((gpudataobj) => gpudataobj.oem === "NVIDIA")))
-        }
-    }
+{/* unfinished feature, will implement in production version*/}
+    // const selectOEM = (event) => {
+    //     if (event.target.value === "1") {
+    //         return (fetchgpucarddata(gpucarddata.filter((gpudataobj) => gpudataobj.oem === "AMD")))
+    //     } else if (event.target.value === "2") {
+    //         return (fetchgpucarddata(gpucarddata.filter((gpudataobj) => gpudataobj.oem === "NVIDIA")))
+    //     }
+    // }
 
     
     const saveTrackedCards = (gpudataobj) => {
@@ -51,7 +51,8 @@ export const GPUDataInterface = () => {
         <>
         <h1>Graphics Card Prices</h1>
                 <>
-              <div>
+            {/* unfinished feature, will implement in production version*/}
+              {/* <div>
               <form>
                     <b> Filter by OEM</b>
                 <select defaultValue= "Select an OEM"
@@ -61,7 +62,7 @@ export const GPUDataInterface = () => {
                 <option value="2">NVIDIA</option>
                 </select>
                 </form>
-              </div>
+              </div> */}
 
                 </>
              <table>
