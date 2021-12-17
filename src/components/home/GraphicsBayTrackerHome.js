@@ -22,7 +22,7 @@ export const GraphicsBayTrackerHome = () => {
     
     return ( <>
 
-        <h1><Link to="/">GraphicsBay Tracker</Link></h1>  <div> 
+          <div> 
             <button onClick={() => history.push("/pricing/GPUDataInterface")}>Graphics Card Pricing Tool</button>
             {NewsStories()} 
         </div>  
