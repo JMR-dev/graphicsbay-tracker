@@ -4,6 +4,7 @@ import { ApplicationViews } from "./ApplicationViews";
 import { NavBar } from "./nav/NavBar";
 import { Login } from "./auth/Login";
 import { Register } from "./auth/Register";
+import { HomepageBanner } from "./home/HomepageBanner";
 
 export const GraphicsBayTracker = () => {
   return ( <>
@@ -13,6 +14,7 @@ export const GraphicsBayTracker = () => {
         if (localStorage.getItem("graphicsbaytracker_customer")) {
           return (
             <>
+             <HomepageBanner />
               <NavBar />
               <ApplicationViews />
             </>
