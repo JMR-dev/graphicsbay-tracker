@@ -8,7 +8,7 @@ export const Profile = () => {
 
     useEffect(
         () => {
-            fetch("http://localhost:8088/trackedCards?_expand=cardDataId")
+            fetch("http://localhost:8088/trackedCards?_expand=cardData")
                 .then(res => res.json())
                 .then(setcurrentUsertrackedcards)
         }, [])
@@ -18,10 +18,44 @@ export const Profile = () => {
                     .then(res => res.json())
                     .then(fetchUsers)
             }, [])
+
+            // useEffect =  (
+            //     () = {
+
+            //     }, [currentUsertrackedcards]
+            //     )
+// const showprofileinfo = () => {
+//     Users.filter((user) => {
+//         if (user.id === currentuser)
+//     }
+
+
+
+
+    
+
+    const removetrackedcard = (gpudataobj) => {
+
+                const trackedcardtodeleteobj = {
+                id: gpudataobj.id,
+                userId: gpudataobj.userId,
+                cardDataId: gpudataobj.txt
+                }
+        const deletefetchfortrackedcards = {
+                method: "DELETE",
+                headers: {
+                        "Content-Type": "application/json",
+        },
+        body: JSON.stringify(trackedcardtodeleteobj),
+        }
+        
+                return fetch("http://localhost:8088/trackedCards", deletefetchfortrackedcards)
+        }   
         return(
           <>
           {/* why is my code returning duplicate elements?*/}
-        <p>returning something. This is a test</p>
+        <h2>My Tracked Cards</h2>
+        <p> {} </p>
         <table>
             <tr>
             <th>Brand</th>
@@ -36,18 +70,19 @@ export const Profile = () => {
                     gpudataobj => {
 
                         return ( <>
-                            <p key = {
-                                `gpudataobj--${gpudataobj.id}`
-                            } > {
-                                gpudataobj.cardDataId.oem
+                              {
+                                gpudataobj.cardData.oem
                             } {
-                                gpudataobj.cardDataId.brand
+                                gpudataobj.cardData.brand
                             } {
-                                gpudataobj.cardDataId.model
+                                gpudataobj.cardData.model
                             } {
-                                gpudataobj.cardDataId.price
-                            } </p>   {
-                                 <button >Remove from Tracked Cards</button>
+                                gpudataobj.cardData.price.toLocaleString('en-US', {
+                                    style: 'currency',
+                                    currency: 'USD'
+                                })
+                            }   {
+                                 <button onClick={ () => removetrackedcard(gpudataobj)} >Remove from Tracked Cards</button>
                                 }
                                 </>
                                 )
