@@ -1,10 +1,12 @@
 import { React } from "react"
 import { useState, useEffect } from "react";
+import { ProfileForm } from "./ProfileForm";
 
 export const Profile = () => {
     const [Users, fetchUsers] = useState([])
     const [currentuser, setcurrentuser] = useState(localStorage.getItem("graphicsbaytracker_customer"))
     const [currentUsertrackedcards, setcurrentUsertrackedcards] = useState([])
+    const [formactive, setformstate] = useState(false)
 
     useEffect(
         () => {
@@ -24,38 +26,67 @@ export const Profile = () => {
 
             //     }, [currentUsertrackedcards]
             //     )
-// const showprofileinfo = () => {
-//     Users.filter((user) => {
-//         if (user.id === currentuser)
-//     }
+const showprofileinfo = () => {
+  const founduser =  Users.find((user) => user.id === parseInt(currentuser)) 
+        
+  return (<p>{founduser?.name} <br/> {founduser?.email}</p>)
+}
+
+const toggleForm = () => {
+    setformstate(true)  
+    formactive === true ? <ProfileForm /> : <Profile />
+}
 
 
-
-
+ useEffect(() => {
+             Users.filter(
+                 ({
+                     id,
+                     name,
+                     email
+                 }) => {
+                     if (Users.id === parseInt(currentuser))
+                         return ( 
+                         <ProfileForm 
+                            id = {
+                                 id
+                             }
+                             name = {
+                                 name
+                             }
+                             email = {
+                                 email
+                             }
+                             />
+                             )
+                         }
+                    )
+              }
+         )
     
 
     const removetrackedcard = (gpudataobj) => {
 
-                const trackedcardtodeleteobj = {
-                id: gpudataobj.id,
-                userId: gpudataobj.userId,
-                cardDataId: gpudataobj.txt
-                }
+    
         const deletefetchfortrackedcards = {
                 method: "DELETE",
-                headers: {
-                        "Content-Type": "application/json",
-        },
-        body: JSON.stringify(trackedcardtodeleteobj),
-        }
-        
-                return fetch("http://localhost:8088/trackedCards", deletefetchfortrackedcards)
+                
+        }   
+                return fetch(`http://localhost:8088/trackedCards/${gpudataobj.id}`, deletefetchfortrackedcards)
+                .then(() => {
+                    fetch("http://localhost:8088/trackedCards?_expand=cardData")
+                        .then(res => res.json())
+                        .then(setcurrentUsertrackedcards)
+                })
         }   
         return(
           <>
-          {/* why is my code returning duplicate elements?*/}
+          
         <h2>My Tracked Cards</h2>
-        <p> {} </p>
+        <p>{showprofileinfo()}</p>
+        <button onClick={ () => { toggleForm()
+        }
+    }>Edit Profile Info </button>
         <table>
             <tr>
             <th>Brand</th>
