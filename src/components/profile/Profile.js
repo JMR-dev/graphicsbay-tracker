@@ -1,12 +1,14 @@
 import { React } from "react"
 import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { ProfileForm } from "./ProfileForm";
 
 export const Profile = () => {
     const [Users, fetchUsers] = useState([])
     const [currentuser, setcurrentuser] = useState(localStorage.getItem("graphicsbaytracker_customer"))
     const [currentUsertrackedcards, setcurrentUsertrackedcards] = useState([])
-    const [formactive, setformstate] = useState(false)
+    const history = useHistory()
+
 
     useEffect(
         () => {
@@ -32,37 +34,7 @@ const showprofileinfo = () => {
   return (<p>{founduser?.name} <br/> {founduser?.email}</p>)
 }
 
-const toggleForm = () => {
-    setformstate(true)  
-    formactive === true ? <ProfileForm /> : <Profile />
-}
 
-
- useEffect(() => {
-             Users.filter(
-                 ({
-                     id,
-                     name,
-                     email
-                 }) => {
-                     if (Users.id === parseInt(currentuser))
-                         return ( 
-                         <ProfileForm 
-                            id = {
-                                 id
-                             }
-                             name = {
-                                 name
-                             }
-                             email = {
-                                 email
-                             }
-                             />
-                             )
-                         }
-                    )
-              }
-         )
     
 
     const removetrackedcard = (gpudataobj) => {
@@ -84,7 +56,7 @@ const toggleForm = () => {
           
         <h2>My Tracked Cards</h2>
         <p>{showprofileinfo()}</p>
-        <button onClick={ () => { toggleForm()
+        <button onClick={ () => { history.push("/profile/ProfileForm")
         }
     }>Edit Profile Info </button>
         <table>
