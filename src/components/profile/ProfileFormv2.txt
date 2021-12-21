@@ -1,0 +1,32 @@
+const [formactive, setformstate] = useState(false)
+const toggleForm = () => {
+    setformstate(true)  
+    formactive === true ? <ProfileForm /> : <Profile />
+}
+
+
+ useEffect(() => {
+             Users.filter(
+                 ({
+                     id,
+                     name,
+                     email
+                 }) => {
+                     if (Users.id === parseInt(currentuser))
+                         return ( 
+                         <ProfileForm 
+                            id = {
+                                 id
+                             }
+                             name = {
+                                 name
+                             }
+                             email = {
+                                 email
+                             }
+                             />
+                             )
+                         }
+                    )
+              }
+         )
