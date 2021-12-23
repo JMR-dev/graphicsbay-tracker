@@ -35,7 +35,8 @@ export const NavBar = (props) => {
                     <ul className="navbar-nav">
                         < li className = "nav-item" > {
                                                 <button onClick = {
-                                                    () => {localStorage.removeItem("graphicsbaytracker_customer")}}> Log Out </button>
+                                                    () => {localStorage.removeItem("graphicsbaytracker_customer")
+                                                history.push("login")}}> Log Out </button>
 
     }
                             </li>

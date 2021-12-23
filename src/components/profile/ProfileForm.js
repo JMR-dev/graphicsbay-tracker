@@ -15,8 +15,8 @@ export const ProfileForm = () => {
         fetch(`http://localhost:8088/users/${founduser.id}`, {
                 method: 'PUT',
                 body: JSON.stringify({
-                    name: editedusername,
-                    email: editeduseremail,
+                    name: founduser.name,
+                    email: founduser.email,
                     
                 }),
                 headers: {
@@ -50,9 +50,13 @@ export const ProfileForm = () => {
 
     useEffect(
         () => {
-           const desireduser = userpool.find((userobj) => userobj.id === parseInt(usertoedit))
-            return setfounduser(desireduser)
-        }, )
+           if (userpool.length > 0 ){
+
+               const desireduser = userpool.find((userobj) => userobj.id === parseInt(usertoedit))
+               
+               return setfounduser(desireduser)
+            }
+        },[userpool] )
     useEffect(
         () => {
             fetch("http://localhost:8088/users")
@@ -64,10 +68,17 @@ export const ProfileForm = () => {
     <h2>Edit Profile Data</h2>
         <form id="edituserform">
   <label for="fandlname">First and Last Name</label><br/>
-  <input type="text" id="fndlname" name="fandlname"  onChange={(e) => {seteditedusername(e.target.value)}}/><br/>
+  <input type="text" id="fndlname" name="fandlname" value={founduser?.name}  onChange={(e) => {
+      const copy = {...founduser}
+      copy.name = e.target.value
+      setfounduser(copy)
+    }}/><br/>
   <label for="email">Email</label><br/>
-  <input type="text" id="email" name="email" onChange={(e) => { setediteduseremail(e.target.value)}}/>
-  <button type="button" id="submitbutton" name="submitbutton" form="edituserform" onClick={()=> editprofileinfocall()}>Submit</button>
+  <input type="text" id="email" name="email" value={founduser?.email} onChange={(e) => { 
+     const copy = {...founduser}
+     copy.email = e.target.value
+     setfounduser(copy)}}/>
+  <button type="button" id="submitbutton"  name="submitbutton" form="edituserform" onClick={()=> editprofileinfocall()}>Submit</button>
 
     </form>
         </>
